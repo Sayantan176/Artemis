@@ -1,0 +1,18 @@
+Received: by mail-relay.internal.net (Postfix, from userid 1001)
+	id 4X8mK90p2qz3; Fri, 6 Sep 2026 10:14:22 +0000
+Received: from gateway.company.com (10.0.1.20) by mail-relay.internal.net
+	via SMTP; Fri, 6 Sep 2026 10:14:15 +0000
+Received: from mail.suspicious-sender.com (209.85.220.41) by gateway.company.com
+	with ESMTP id AA39482; Fri, 6 Sep 2026 10:13:58 +0000
+From: Billing Support <invoicing@suspicious-domain.com>
+To: target@company.com
+Subject: Urgent: Overdue Invoice #8291
+Date: Fri, 6 Sep 2026 10:13:50 +0000
+Message-ID: <abc-12345-alert@suspicious-domain.com>
+X-Originating-IP: [209.85.220.41]
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Dear customer,
+
+Your invoice #8291 is overdue. Please remit payment immediately.

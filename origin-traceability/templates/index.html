@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORIGIN TRACEABILITY // FORENSIC EMAIL SUITE</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#141c2f',
+                            900: '#0f172a',
+                            950: '#090d16',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans h-screen flex flex-col overflow-hidden">
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 p-4 flex justify-between items-center shrink-0">
+        <div class="flex items-center gap-4">
+            <h1 class="text-emerald-400 font-mono font-bold tracking-wider text-xl">ORIGIN TRACEABILITY // FORENSIC EMAIL SUITE</h1>
+            <div class="flex items-center gap-2 px-3 py-1 bg-slate-800 rounded-full text-xs font-mono border border-slate-700">
+                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                PIPELINE ONLINE
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div id="sample-container" class="flex gap-2">
+                <!-- Samples will load here -->
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-4 flex gap-4 h-full relative">
+        <!-- Left Panel: Controls & Extracted Data -->
+        <div class="w-1/2 flex flex-col gap-4 overflow-y-auto pr-2 pb-20 custom-scrollbar">
+            <!-- Upload Zone -->
+            <div id="dropzone" class="border-2 border-dashed border-slate-700 hover:border-cyan-500 bg-slate-900 rounded-lg p-6 text-center cursor-pointer transition-colors relative">
+                <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".eml">
+                <div class="pointer-events-none">
+                    <p class="text-slate-400 font-mono text-sm">DRAG & DROP .EML FILE</p>
+                    <p class="text-slate-500 text-xs mt-1">OR CLICK TO BROWSE</p>
+                </div>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div id="progress-container" class="hidden font-mono text-xs text-slate-400 bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <span id="step-1" class="text-slate-500">[1] Header Hops</span>
+                    <span id="step-2" class="text-slate-500">[2] Geo & ASN</span>
+                    <span id="step-3" class="text-slate-500">[3] Reputation</span>
+                    <span id="step-4" class="text-slate-500">[4] OSINT Attribution</span>
+                </div>
+                <div class="w-full bg-slate-800 h-1 mt-2 rounded">
+                    <div id="progress-bar" class="bg-cyan-500 h-1 rounded w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <!-- Warning Banner -->
+            <div id="cloud-warning" class="hidden bg-amber-900/20 border border-amber-500/50 rounded-lg p-4">
+                <h3 class="text-amber-500 font-mono font-bold text-sm mb-1 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    CLOUD INFRASTRUCTURE DETECTED
+                </h3>
+                <p class="text-amber-200/70 text-xs">Origin IP belongs to a known cloud/webmail provider. Network-level coordinates reflect server infrastructure, not the end-user. Rely on OSINT Semantic Attribution for true origin.</p>
+            </div>
+
+            <!-- Results Container -->
+            <div id="results-container" class="hidden flex-col gap-4">
+                
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                        <div class="text-slate-500 text-xs font-mono mb-1">ORIGIN IP</div>
+                        <div class="flex items-center gap-2">
+                            <span id="res-ip" class="text-cyan-400 font-mono text-lg">-</span>
+                            <button id="copy-ip" class="text-slate-500 hover:text-cyan-400 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </button>
+                        </div>
+                        <div class="mt-2 text-xs font-mono">
+                            <span id="res-conf" class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400">CONF: -</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                        <div class="text-slate-500 text-xs font-mono mb-1">PREDICTED COUNTRY</div>
+                        <div class="text-rose-400 font-mono text-lg flex items-center gap-2" id="res-country">-</div>
+                        <div class="mt-2 text-xs font-mono flex gap-2">
+                            <span id="res-sem-conf" class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400">SEMANTIC: -</span>
+                            <span id="res-rag" class="hidden px-2 py-0.5 rounded bg-cyan-900/30 border border-cyan-800 text-cyan-400">RAG: TRIGGERED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OSINT Attribution Panel -->
+                <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 border-l-4 border-l-rose-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="text-slate-500 text-xs font-mono">LLM OSINT REASONING</div>
+                        <div class="text-xs text-rose-500 font-mono">GROQ/QWEN-3.8-27B</div>
+                    </div>
+                    <p id="res-reasoning" class="text-sm text-slate-300 leading-relaxed font-mono whitespace-pre-wrap">-</p>
+                </div>
+
+                <!-- Network & Reputation -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                        <div class="text-slate-500 text-xs font-mono mb-2">PHYSICAL NETWORK</div>
+                        <div class="space-y-1 text-sm font-mono text-slate-300">
+                            <div><span class="text-slate-500">City:</span> <span id="res-city">-</span></div>
+                            <div><span class="text-slate-500">Region:</span> <span id="res-region">-</span></div>
+                            <div><span class="text-slate-500">ASN:</span> <span id="res-asn">-</span></div>
+                            <div><span class="text-slate-500">Org:</span> <span id="res-org" class="truncate block">-</span></div>
+                            <div><span class="text-slate-500">Type:</span> <span id="res-type">-</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                        <div class="text-slate-500 text-xs font-mono mb-2">INTELLIGENCE FLAGS</div>
+                        <div class="flex flex-wrap gap-2" id="res-flags">
+                            <span class="px-2 py-1 rounded bg-slate-800 border border-slate-700 text-slate-400 text-xs font-mono">CLEAN</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-800">
+                            <div class="text-slate-500 text-xs font-mono mb-2">DOMAIN AUTHENTICITY</div>
+                            <div class="space-y-1 text-sm font-mono text-slate-300">
+                                <div><span class="text-slate-500">Domain:</span> <span id="res-domain">-</span></div>
+                                <div><span class="text-slate-500">Age:</span> <span id="res-age">-</span></div>
+                                <div class="flex gap-2 mt-1">
+                                    <span id="res-spf" class="px-1.5 py-0.5 rounded bg-slate-800 text-xs">SPF: -</span>
+                                    <span id="res-dmarc" class="px-1.5 py-0.5 rounded bg-slate-800 text-xs">DMARC: -</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Origin IP Intelligence Table -->
+                <div class="mt-4 mb-4">
+                    <div class="text-slate-300 text-sm font-mono italic text-center mb-2">Origin IP Intelligence</div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm font-mono border-collapse border border-slate-500">
+                            <thead>
+                                <tr class="border-b border-slate-500">
+                                    <th class="p-2 border-r border-slate-500 font-normal text-rose-500">Provider / ISP</th>
+                                    <th class="p-2 border-r border-slate-500 font-normal text-rose-500">Datacenter?</th>
+                                    <th class="p-2 border-r border-slate-500 font-normal text-rose-500">VPN?</th>
+                                    <th class="p-2 font-normal text-rose-500">Proxy?</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-300 bg-slate-900">
+                                <tr>
+                                    <td class="p-2 border-r border-slate-500" id="intel-isp">-</td>
+                                    <td class="p-2 border-r border-slate-500" id="intel-dc">-</td>
+                                    <td class="p-2 border-r border-slate-500" id="intel-vpn">-</td>
+                                    <td class="p-2" id="intel-proxy">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Trace Audit Table -->
+                <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-3 cursor-pointer" id="toggle-trace">
+                        <div class="text-slate-500 text-xs font-mono">HEADER TRACE AUDIT (REVERSE CHRONO)</div>
+                        <svg class="w-4 h-4 text-slate-500 transform transition-transform" id="trace-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div id="trace-table" class="hidden overflow-x-auto">
+                        <table class="w-full text-left text-xs font-mono">
+                            <thead class="text-slate-500 border-b border-slate-800">
+                                <tr>
+                                    <th class="pb-2 font-normal">HOP</th>
+                                    <th class="pb-2 font-normal">IP</th>
+                                    <th class="pb-2 font-normal">TRUST</th>
+                                    <th class="pb-2 font-normal">REASON</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trace-body" class="text-slate-300 divide-y divide-slate-800/50">
+                                <!-- Traces injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Export & Raw Header -->
+                <div class="flex gap-3 mt-2">
+                    <button id="btn-export" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs py-2 rounded transition-colors border border-slate-700">DOWNLOAD JSON</button>
+                    <button id="btn-raw" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs py-2 rounded transition-colors border border-slate-700">VIEW RAW HEADERS</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Map -->
+        <div class="w-1/2 bg-slate-900 border border-slate-800 rounded-lg relative overflow-hidden flex flex-col">
+            <div id="map" class="flex-1 w-full h-full bg-slate-950"></div>
+            <!-- Map Overlay Info -->
+            <div id="map-overlay" class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur border border-slate-700 rounded-lg p-3 font-mono text-xs hidden flex justify-between items-center z-[1000]">
+                <div>
+                    <span class="text-slate-500">GEO_LOC:</span> <span id="map-loc" class="text-emerald-400">WAITING</span>
+                </div>
+                <div>
+                    <span class="text-slate-500">SEMANTIC:</span> <span id="map-sem" class="text-rose-400">WAITING</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Raw Header Modal -->
+    <div id="raw-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[2000] flex justify-end">
+        <div class="w-1/3 bg-slate-900 h-full border-l border-slate-800 flex flex-col transform translate-x-full transition-transform duration-300 shadow-2xl" id="raw-drawer">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-emerald-400 font-mono text-sm">RAW EMAIL TRACE</h3>
+                <button id="close-raw" class="text-slate-500 hover:text-slate-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <div class="p-4 overflow-y-auto flex-1 font-mono text-xs text-slate-400 whitespace-pre-wrap break-all custom-scrollbar" id="raw-content">
+                <!-- Raw content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>

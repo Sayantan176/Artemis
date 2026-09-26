@@ -1,0 +1,139 @@
+Delivered-To: sayantanroy634@gmail.com
+Received: by 2002:a05:7108:7348:b0:587:9d6d:7a47 with SMTP id i8csp312446gdr;
+        Mon, 24 Aug 2026 23:48:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AHgh+RqXa3sa17UHd3bm0boDAaRl41rLUjDe4IW+7ZkZ4DLJZFU1bz9+dioEx2s1K7XFPPaxtP4Cu3kdkrSgSptZPA==@gmail.com
+X-Received: by 2002:a17:907:8992:b0:c21:8c6a:c680 with SMTP id a640c23a62f3a-c24926673cfmr2810893666b.22.1787640506842;
+        Mon, 24 Aug 2026 23:48:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1787640506; cv=pass;
+        d=google.com; s=arc-20260327;
+        b=jApnVQNyfklE22hvPHKbo1iBJEG2O/yubMw0rnjY2Cm+nXwo6J77bXM8vc+q1yBZk8
+         0dmLEoSeNuxf9scduQ4nTqNFd221Pg5MrY2zQEX1UPgsSuZ4YSyzxgTenFyPT8BZLsXF
+         MrkCd2yOIQrs83pCx6LHxzSRJm9SsajE8QEvu0WwMmq0DLqGr5WB8QbRFsmzKpJlA2Co
+         KSMBcAPOSRu14S2OeGK3rgHb6fw07/5a5lQS9ih4b617NseE7ozN2CbCvlmF8Y3PaLBh
+         8ZU2tuMTloP4FqdZbQSJkeGzQrxfpCiU6mhGFNapf1iHnh7H/Dn5IjuU7qvg6FIqp+Aj
+         XJJg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=QXB2QN/HMNVcb8WUPBXnXmGTMfmMC8kFbqjtcYyvfbI=;
+        fh=3wuRa7losvgeeNwGJfZiQ3F/l7t6Jm8+YFPU62EBq1s=;
+        b=YWCm+FARlxrOBx71G/BJvu3cPpt7Pes8t6WxYkP9mnj+r6yWQuDNoY5NBW7YPfeINd
+         tu7gvTVRu9Q7PGhbrBIL/nQNSuHbACfnDoUvGpt75XPzdtKvFKHQfk1HjEtT6q4zsH80
+         zy1KsWtG+o0mkFOcEydgu94Be4+mjdzn38Fogg8mE83oUil1ySXjb6N+q9zEza4xHzMx
+         fnlOvZVOgWoYOi2U7Tg42Vy3Gj9wvq2mhph5tsH39c4jo63RFQ3TLCKc2yuz959wlUCf
+         oKyDKT14oC9ixRYYtcrxZDv6yxMMok3AxkNp7tsGKbLAw18wsTUEOGcNe8ysJs2JE4xI
+         s/LQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20251104 header.b=WOtzj1IL;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of 2005shivampratap@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=2005shivampratap@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <2005shivampratap@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-c24ede9ec3dsor30683466b.9.2026.08.24.23.48.26
+        for <sayantanroy634@gmail.com>
+        (Google Transport Security);
+        Mon, 24 Aug 2026 23:48:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 2005shivampratap@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20251104 header.b=WOtzj1IL;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of 2005shivampratap@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=2005shivampratap@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1787640506; cv=none;
+        d=google.com; s=arc-20260327;
+        b=ZKRcIja9+lt0jMmrtUElfYDdodWyjPDPOgX5FG8X8HV75d4/SPFB2XbK0F5Mm5rNrj
+         sDKC/NBeRevjFMyGkgpXtCFf71Vm8JTuMLvbNYYeeG6deYmvN/bCulnzYFi8KX2WR/CV
+         ig6p1iXvOD/WCxL6Ee33q43dQGReCvQl6IZKeG65CUoa9e0lCj17KTG7dwKKYbm9howL
+         KSgySH/qcEa8ypsuDilb4toAt70+za1RWe7I6EMSvwNfCmwCL/Y3h84/ELoB9VIw+s7p
+         e4/4pgLgzjgbmkKmRo9v6XtUOPvzAFMzCjGUsD2pi/01cFY3+sraBcPN6+xHENgJFZ8e
+         6C3w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=QXB2QN/HMNVcb8WUPBXnXmGTMfmMC8kFbqjtcYyvfbI=;
+        fh=3wuRa7losvgeeNwGJfZiQ3F/l7t6Jm8+YFPU62EBq1s=;
+        b=GXh/NDIb4QZy5fIzpLBpk/HcI+V1xwgqJfrLlEj6j/dTj+icGMR+sLtMJ8WmSZccN+
+         nywHZ1TUpE9SGgP2eYPRuY2QhbA4hnH9DABjPES0TN9IcSSyxuzkfrFWqMqRc2XniWfT
+         Tbjtgepr5rfUGkZXi2Pq6TxoxremVsTd9aX/wxVCj5ck3OD9zCvAgMB7V9JOT/Oh80IQ
+         ZnGzwOxRupfEx8SPL5TuiujzGCDpiP9O06Xi3d/TeCL7B99UCsrkyIhtIXIb/52m8sam
+         Ou1JOCx4tfEnSZ0Qjhmr9AwZ+RAagM1OO3IPsi2/BMXUyQf72IQ5pFiYefOoz3+A1seX
+         Q/sg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787640506; x=1788245306; dara=google.com;
+        h=content-transfer-encoding:content-type:to:subject:message-id:date
+         :from:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QXB2QN/HMNVcb8WUPBXnXmGTMfmMC8kFbqjtcYyvfbI=;
+        b=WOtzj1ILexLAeeP4TOu2NIOzCPZA/mKVjLPXw0dBtiLjJZVNQBy+af3GAWcMShXHD+
+         UKJxkX+adPjDH0gQAGnQUNKO/X2RynzxrfFDDOb4AU3W5ve3VNabvR3BnX/IVT8CXZan
+         7hyZuacJ/PsMs/wc9sHEhmEe5RWfFaXqd5OxIKN1y4nVVg+Jn0OLD2+muMM78AUBouGn
+         7D5oWcJElMleUFKHUAKN6l0CMfkW0917dgbKVseinrU19FIe7IKv7FZa7QbKNMftNXto
+         7w7yN81o8iVnOi47y0NRK9qf5IdDApn6LS6+k+P84QDALA4Lx1OPCMhPT6Ffx8L4XrpU
+         fPZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787640506; x=1788245306;
+        h=content-transfer-encoding:content-type:to:subject:message-id:date
+         :from:mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=QXB2QN/HMNVcb8WUPBXnXmGTMfmMC8kFbqjtcYyvfbI=;
+        b=FSRhabIxq6UCN1k4LPy2PmWq4hxpwsR6fbIHy+6fB7FLhSoQFyh3pBbXs9a8Y2U5Wl
+         g0pDWM6TCUhlzLzmWEd7aJFgZr5BFGD1Am75/fWABkigcIU2U1Mqp2qc0cfDVx+3MWXT
+         N9KDRb4iuP9wCk4fSypR8K/0VL5iqBezAQTNAy44EBwh8PviJQI1nA96jJv2vTEpsbvh
+         E9XazYwJ5g3wKXx6xY9hb2JfhPLw2YBfHj61wFWX89N5uffq5ZEpclZo3wl7U/G3zLqW
+         /dOX9w00CVVqd2wcfCr33mDRohBOIXcVwp31Wyw/1Gk9y+xgvS1/nuXiRd39erGrZ+YG
+         Qqag==
+X-Forwarded-Encrypted: i=1; AHgh+RrLApD/hX0ZhdRqCKEdYWQw+pB0mw552TpEunHBnYhEb993piulXl0wjs47hMY2ZyhGKUpfaxiIa4cylX75QQ==@gmail.com
+X-Gm-Message-State: AFuF++lH2bIsEcal9TRmbu7j5w/hREzi6G1fSN0ypaBNSt3IQu8Z68u5
+	yP8ZeQ7xA8i+B7nBpSKRMUnQW5cDczXWCpJ9c44nwaystt8fiXjIYSgVK226O3ac+CkK1TGLPDS
+	ns5HUbT6lg5ebDpIjA8sXGYoX+902yCM=
+X-Gm-Gg: AR+sD10A3cbyXJZMy4lZHevtLIzA5SOrvUm8HPVm1F2lwD106aOWOtSZyN1eHb1CVUW
+	R+F0rl2NedwqhK9TmjrDTfZWUHDFInqb645ZjUEl61d2AtV9dTWDDSO06WfI4xSNMtD4IWHNr4S
+	/MKHnataP3qgXlPdQD08q8eSf7tUhz7/RYdKOw2BZqoTJ+LYhNo6aCRyadASyYQ+bHdOd0qUaiO
+	FDROlPrbnBf35uoYYgcedpWQTYe+tmAVWBPluhfvbqQW5+bjyD50+8QYu+DZExQLZ/eaTwVbBHf
+	83crFtU3/pePPOM0wZ0VRHFzd4uM6bbVYt2RaopfNdffrO89kqmLqU5Nu2xEOLRd8KCiNkyVDDh
+	ipmGd8Gw=
+X-Received: by 2002:a05:6402:1908:b0:6a3:ee60:b13f with SMTP id
+ 4fb4d7f45d1cf-6a582b7848fmr24309871a12.14.1787640506130; Mon, 24 Aug 2026
+ 23:48:26 -0700 (PDT)
+MIME-Version: 1.0
+From: Shivam Pratap <2005shivampratap@gmail.com>
+Date: Tue, 25 Aug 2026 12:18:15 +0530
+X-Gm-Features: AcwNN1Xq8dSDRyUq7p9lvTGGxiHHf_i05xPCnESTN9nuRMru4YyxLwdYMS3q7ns
+Message-ID: <CAG6SkWPQdBP2gkQRim_MvCK7LXWdYe-Vvygc3oBKd-s3Hj7Lfg@mail.gmail.com>
+Subject: Hiring Campus Ambassadors
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Bcc: sayantanroy634@gmail.com
+
+=F0=9F=9A=80 *Exciting Opportunity for All* =F0=9F=9A=80
+
+Digimation Flight is Hiring Campus Ambassadors!
+
+If you're passionate about technology, leadership, community building,
+and networking, this is your chance to become a Campus Ambassador and
+represent Digimation Flight on your campus.
+
+=E2=9C=A8 *Benefits* :
+=E2=80=A2 Letter of Recommendation
+=E2=80=A2 Networking Opportunities
+=E2=80=A2 *Certificate of Recognition*
+=E2=80=A2 *Performance-Based Rewards*
+=E2=80=A2 Direct Exposure to Industry Professionals
+
+=F0=9F=93=8C *Who Can Apply?*
+All are eligible to apply.
+
+=F0=9F=93=9D *Apply Now* : https://forms.gle/rB5mprdrkrV1QN4f9
+
+Fill out the application form and take the first step toward becoming
+a Campus Ambassador.
+
+Don't miss this opportunity to enhance your profile and gain valuable
+experience!

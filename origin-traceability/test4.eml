@@ -1,0 +1,108 @@
+Return-Path: <tendingtoinfinitydevelopers@gmail.com>
+X-Original-To: masterofgoon2003@proton.me
+Delivered-To: masterofgoon2003@proton.me
+Authentication-Results: mail.protonmail.ch; dkim=pass (Good 2048 bit
+    rsa-sha256 signature) header.d=gmail.com header.a=rsa-sha256
+Authentication-Results: mail.protonmail.ch; dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+Authentication-Results: mail.protonmail.ch; spf=pass smtp.mailfrom=gmail.com
+Authentication-Results: mail.protonmail.ch; arc=none smtp.remote-ip=209.85.221.176
+Authentication-Results: mail.protonmail.ch; dkim=pass (2048-bit key) header.d=gmail.com
+ header.i=@gmail.com header.b="sQrVnlzn"
+Received: from mail-vk1-f176.google.com (mail-vk1-f176.google.com [209.85.221.176])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256) (No
+ client certificate requested) by mailin047.protonmail.ch (Postfix) with ESMTPS id
+ 4gKPsQ54s4z3Q for <masterofgoon2003@proton.me>; Tue, 19 May 2026 06:29:30 +0000 (UTC)
+Received: by mail-vk1-f176.google.com with SMTP id 71dfb90a1353d-5780c38ecb8so1762148e0c.2
+        for <masterofgoon2003@proton.me>; Mon, 18 May 2026 23:29:30 -0700 (PDT)
+Received: from [127.0.0.1] (mail.tendingtoinfinityacademy.com. [69.62.78.204])
+        by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-369572061b8sm5003762a91.3.2026.05.18.23.21.30
+        for <masterofgoon2003@proton.me>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 May 2026 23:21:31 -0700 (PDT)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779172169; x=1779776969; darn=proton.me;
+        h=mime-version:date:message-id:subject:to:from:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=A6TJWLC1U/JBGawEomhQOD1Rj/4Wq4YK2vffPwFxKKY=;
+        b=sQrVnlznD4hDULMHVUInb83WwZfyNY0l++VCATaEBNyA6B9+vpp3fwjzDnFQoo9LYM
+         1i6BoeAklLDP+LK+OHQ0cEZjFi0aIAkn6H+OCYhS+AQFI0l4RD/DVxbYdKo89Ywf8Nkh
+         3hCr7xZWU3O70dfoQOD3Vl1rVr1JshvDxK/MSB8//S3M722cCGJmWA7Ls9MT/+jssZGe
+         EFyvwkLhxmwaOuWBAXiwOJ7J5VZ8AGeayOIvvB4k/CpqgTDipOcxxBYXxnH+II1Fpe/F
+         K+/R4NxO8MR2DiusLxPWJbeJT4+HP4Di6atpi9K4UY2HdKSUjgMwljUTUP4pLH5KMwYJ
+         z1nQ==
+X-Google-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779172169; x=1779776969;
+        h=mime-version:date:message-id:subject:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=A6TJWLC1U/JBGawEomhQOD1Rj/4Wq4YK2vffPwFxKKY=;
+        b=EqJ9oOM8eVeAMTxrdKlZyYtt+pX0clOAg6YzjKkT2/BD0na6By4/WUpeyVcEJKWAxK
+         GkO4zV1mg0QmZhO2LK3qgw2lyVffJhNylm2zSw5E0omcX5IqJ2ODvxrkxBe0RjHmX/Kg
+         gD0mXqcD2XFrsNYBDbHk0AsTbTlSHPJkMnMMz+FitjMeIVDH2fd23IFaxaV8nNx7vkLK
+         Wz1N1N1RLYMqTllDBMghBJZ2R4BthQwJgPx0ncNyzvskJltnHLVhj//ymM4AHTO48Zve
+         zEvrwkzI45Slv6XZppBhFu40sAxP1Wi/2uEJUjARAbyQLz/mp2JrOeKZaw/aki0UnZgg
+         0bvA==
+X-Gm-Message-State: AOJu0YyUFQG9Rso2qUqBaUGQE3V653hdXDj9BQU/lKQbo4B9/aAMQWps
+ sI2IEbeL4H40pAcMx3+cbYCUq8PCmIUzlRLCusXwkVFlB7SV3bHQRbhbTyhNyCpl
+X-Gm-Gg: Acq92OFauS2h47IKrfEVyrCIgZJiOpS589NBXjwEWwCwp80iXsUU3t7nDvqjhiyjen0
+ ei6xZ8j6z6wYeBe9Hy7uPXj1jfHVX/yn0J5ZA2UFCVHwox91yB00KTXeG+U5v6aPRweVT40tn/w
+ TiV6sIrbn239lftkrGKi5udcDE/6/XSDz24v0yONLP/UI4MR91Qe89sGxFDDe+T5N1SusFlOunE
+ GJ9M6bj0M/ijTMMkLU+JVWWm1QFNbFN8TAxgRj9yG8ESx2AaWIPK4UTSn/+Po2YMZJWrSpC9o8d
+ M+n4rlDjt2AwsV6OSWWbLAUcVdxGGvHw/vdT1Jsi7Ax/ysgXguHqaoOpHBeg9syYMehaOtYpRnb
+ p7ubxQajwCeaND3S13hU6dOu6iTsCH12Uwyo32iRckSkoJzh1VYPZ/hoLWhjTz+QTT1gXhztK2c
+ P6FE6BvK0c/hBhwc751A5xz//R6XC6Tk8zTfRT+LnifNzTOPt0cLMTqy41MXqG0N0KOuhDI/kg9 68jzPk=
+X-Received: by 2002:a17:90b:4c49:b0:369:bddb:79bd with SMTP id
+ 98e67ed59e1d1-369bddb8547mr7172280a91.25.1779171691748;
+        Mon, 18 May 2026 23:21:31 -0700 (PDT)
+From: Tending to Infinity <tendingtoinfinitydevelopers@gmail.com>
+To: masterofgoon2003@proton.me
+Subject: =?utf-8?Q?=F0=9F=94=90_Verify_your_email_address?=
+Message-Id: <8bd37b94-2221-3cdd-efac-46052038cfda@gmail.com>
+Date: Tue, 19 May 2026 06:21:28 +0000
+Mime-Version: 1.0
+Content-Type: multipart/mixed;boundary=---------------------d04d961cd693adc50bce8db364a8e291
+X-Pm-Spam: 0yezJI6cihyJeYR3pi42biOpJJvbmsCIeI1msjN3X3blJp7IjSlBITQ0iy0iOSNiwJPU
+ FQF9RUVkEUNUSUSO9owIjSCJLUIy6uITLjMsg9kIl1WJZZ91pvZmbjI7pBSIli0QTOsnih1Wa2ZfVF
+ tbm6SIZIhmzjFGd1am95laW13RXbVmk1B3XzXwIYwMjzzAMIwiipFWbFbz8JfcHkW9bZwWitJiOWYs
+ lByM3yS0LMID2wEDMiNw5IsdChm1IaxWfyB3M3XyBIib2ujAOOkT53YDNDM1EY2Mj4DENNwSipFWbH
+ blRRfeHiW1ZZRWkn5Wa2Xv1VsZGijoIa5W0vxmZXYvQVsbXsGlda5WnsFWdWL1UNtLXsWxYIwiiz9F
+ cGctFowIjwjALNETxzEjNTM1EY4Nj2jkMOwCiz9FcGctFJhX2i2UcOAju1ADMTM2EMxMT2TUMNgjy4
+ YTOCLwJN3X3jXRaa9F0w91bGazlluaG6yIZM4CwyQDMjN3YA3Mj4zAMMETz1cTNCLyJ5fdWtmFbZIS
+ 6hdnIGdoNlzbGzC1dZ5WktIXZHcfVdpc3oGNdI1n9tJCLWYslNwXzwl9cc9miwojIjL5kQ2OTxzANN
+ IT2xQjNDO9VJzLCkmlcIojiwEmNzYzANkNG2DENOZGhwQzMWY2YRjNW9n1I
+X-Pm-Origin: external
+X-Pm-Transfer-Encryption: TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+X-Pm-Content-Encryption: on-delivery
+X-Pm-Spamscore: 0
+X-Pm-Spam-Action: inbox
+
+-----------------------d04d961cd693adc50bce8db364a8e291
+Content-Type: multipart/related;boundary=---------------------fa994d154699b305f60e80f9f5aedb15
+
+-----------------------fa994d154699b305f60e80f9f5aedb15
+Content-Type: text/html;charset=utf-8
+Content-Transfer-Encoding: base64
+
+CiAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBtYXgt
+d2lkdGg6IDUwMHB4OyBtYXJnaW46IGF1dG87IGJvcmRlcjogMXB4IHNvbGlkICNlMmUyZTI7IHBh
+ZGRpbmc6IDIwcHg7IGJvcmRlci1yYWRpdXM6IDEwcHg7IGJhY2tncm91bmQ6ICNmYWZhZmE7Ij4K
+ICAgICAgICAgIDxoMiBzdHlsZT0iY29sb3I6ICMzMzM7Ij5XZWxjb21lIHRvIDxzcGFuIHN0eWxl
+PSJjb2xvcjojNGY0NmU1Ij5UZW5kaW5nIHRvIEluZmluaXR5PC9zcGFuPiDwn5GLPC9oMj4KICAg
+ICAgICAgIDxwPlRoYW5rcyBmb3Igc2lnbmluZyB1cCEgQ2xpY2sgdGhlIGJ1dHRvbiBiZWxvdyB0
+byB2ZXJpZnkgeW91ciBlbWFpbCBhZGRyZXNzOjwvcD4KICAgICAgICAgIDxhIGhyZWY9Imh0dHBz
+Oi8vdGVuZGluZ3RvaW5maW5pdHlhY2FkZW15LmNvbS92ZXJpZnktZW1haWw/Y29kZT04ZjE2MWZi
+OC0wZmNmLTQzNjMtOTk5NS1lYTdhZmMxZTJlMmUmZW1haWw9bWFzdGVyb2Znb29uMjAwMyU0MHBy
+b3Rvbi5tZSIgc3R5bGU9ImRpc3BsYXk6IGlubGluZS1ibG9jazsgcGFkZGluZzogMTJweCAyMHB4
+OyBiYWNrZ3JvdW5kLWNvbG9yOiAjNGY0NmU1OyBjb2xvcjogd2hpdGU7IHRleHQtZGVjb3JhdGlv
+bjogbm9uZTsgYm9yZGVyLXJhZGl1czogOHB4OyBmb250LXNpemU6IDE2cHg7IG1hcmdpbjogMjBw
+eCAwOyI+VmVyaWZ5IEVtYWlsPC9hPgogICAgICAgICAgPHA+SWYgdGhlIGJ1dHRvbiBkb2Vzbid0
+IHdvcmssIGNvcHkgYW5kIHBhc3RlIHRoaXMgVVJMIGludG8geW91ciBicm93c2VyOjwvcD4KICAg
+ICAgICAgIDxwIHN0eWxlPSJ3b3JkLWJyZWFrOiBicmVhay1hbGw7IGNvbG9yOiAjNTU1OyI+aHR0
+cHM6Ly90ZW5kaW5ndG9pbmZpbml0eWFjYWRlbXkuY29tL3ZlcmlmeS1lbWFpbD9jb2RlPThmMTYx
+ZmI4LTBmY2YtNDM2My05OTk1LWVhN2FmYzFlMmUyZSZlbWFpbD1tYXN0ZXJvZmdvb24yMDAzJTQw
+cHJvdG9uLm1lPC9wPgogICAgICAgICAgPHAgc3R5bGU9ImZvbnQtc2l6ZTogMTNweDsgY29sb3I6
+ICM3Nzc7Ij7igJQgVGVhbSBUZW5kaW5nIHRvIEluZmluaXR5PC9wPgogICAgICAgIDwvZGl2Pgo=
+-----------------------fa994d154699b305f60e80f9f5aedb15--
+-----------------------d04d961cd693adc50bce8db364a8e291--

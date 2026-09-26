@@ -1,0 +1,120 @@
+Delivered-To: sayantanroy634@gmail.com
+Received: by 2002:a05:7108:9498:b0:587:9d6d:7a47 with SMTP id ih24csp2364314gdb;
+        Sun, 6 Sep 2026 03:10:10 -0700 (PDT)
+X-Received: by 2002:a17:907:7243:b0:c26:19de:9aec with SMTP id a640c23a62f3a-c2619dea86fmr443068666b.43.1788689410083;
+        Sun, 06 Sep 2026 03:10:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1788689410; cv=pass;
+        d=google.com; s=arc-20260327;
+        b=pTXa3nVhwIHvCJe1J8K1aHC2jopwZOm2P79fhdY8FYrNaexGUUnnKhk/J77rJ23hua
+         uyzoUchyvS6xVQclUnCZgnDTRhYqsv2vUSDw52UYn4a0LpQlERTF6WErzA+sbgkbOzUF
+         shZYI40aS3fsVBpJSkMufbGA0OvFA10Y3aVcgIRF5qRYfPI0sB5uH4jjp4VZKMeVn6Jl
+         25R/ZtIz0aTu7qtTwGwmCpm8n5seN3BW1YMq2usqw+NxvItwLG3Q6lvJv+eS7hXusXmW
+         XVrawBWBBk9MVRisPX3jkXDTROAnvKVTEqUYiZoa+uRIhAUEAjM9fLWePIuTgvsNOzEK
+         C+Yg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=I0KCyOw42uRK0hHH231OnOjaHEovCNialr9lJXe3FYI=;
+        fh=eVwo42n3bUaUyztOhA/QwiwUTZqbpLt1MCjEfjzTvrU=;
+        b=NpsmYn3FuhOiw+4/vpoaOQWs6rebOmpRhAMecyokMAGcLZwKYFvDYuYTTvFVxDGvot
+         m2UvDx3AKzzBC9Lwz1ickoVvk4O51UG/g2G7YxxYIUDbzT0IbWkQgR3Mj+nUmO6+tuwC
+         bRXjWUPayTlQt2wnI2JaVZ3AdaYqAUDjULaxrNA3v+p2dReggz4WQEDPFeoLYO6wJZi0
+         OCC0aHJrEkCKvYwTabx/33QC7KBigWDSVz34Z41RpleGxfC/MPUdPfClz1oG6F9wE0SA
+         oYaVHBES2ggTz97D6IpZHLRwfyjq76vF4H6lP+nRLyzWGR+V/SoEzfdcYwlHD4/3Wx/i
+         j2NQ==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20251104 header.b=HTc62Wcm;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of rajnilhere@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=rajnilhere@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <rajnilhere@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-c260d4cee02sor142287466b.9.2026.09.06.03.10.09
+        for <sayantanroy634@gmail.com>
+        (Google Transport Security);
+        Sun, 06 Sep 2026 03:10:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rajnilhere@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20251104 header.b=HTc62Wcm;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of rajnilhere@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=rajnilhere@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1788689409; cv=none;
+        d=google.com; s=arc-20260327;
+        b=rz87MvUuoxpaE9R3dbQP1rGk/dv2atLyMURKJwDBazbriB0+8RdRohH4WHOhRZnzr9
+         X7/uig1UiLVlE7yr7/a12X7Zkvq191DyqNJsbMTcDhxHK+gIDrjf5kCeLZ+MUeUV9JDP
+         6OcshyxugRtwkGp6YmqXURI0UzVxK2tS/E9AbBA6X7Z1Km69CvHeLfHZ2NB+egcM08e5
+         9ZEmfT/9ay3tcDWoXrIeI2O3RL68jGpEv0O5KUVwzEwew+/XC9NTK13zYPe1lPpUG+Jv
+         CQJ2Dt037h3LP7PS5KoXrdr2FibKxJrnPBgt1hAlF6GNcaoPgWGFidOLpiW/DyecjBfB
+         7qHA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=I0KCyOw42uRK0hHH231OnOjaHEovCNialr9lJXe3FYI=;
+        fh=eVwo42n3bUaUyztOhA/QwiwUTZqbpLt1MCjEfjzTvrU=;
+        b=iyRawuAgzpGj0l8npldhvAL7jJ4feIqaS6BvDmWs6UlWk9a6fLHYl+EdUJTwJmd1zA
+         8EFukcy7KKuSQVYamIngKQAZAigCiDAq563GmB0SCLdwJa8qqD/aQNZ+OQzl1VpNEn52
+         ZzJF7WGNWpnd+ST6XgT8rcukIWvdd9qGPPRbrgDdlomYWuGjiHwXuNX1HIBAt1NUdzUJ
+         nTC/9PCMbAjJozFIdmH2c4+gbVv3bnbDaNv1yst4S99Z6TuAJR+3okvvCdU5z/1KRzgG
+         ycTyVjLMijT/vnARVVEvRqtuPoJFabtUYar/8+qnjpSjb5zLWRPW6ct8oDmlJg3EPmU1
+         PDGA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788689409; x=1789294209; dara=google.com;
+        h=content-type:to:subject:message-id:date:from:mime-version:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=I0KCyOw42uRK0hHH231OnOjaHEovCNialr9lJXe3FYI=;
+        b=HTc62Wcmgwx9UE6DRiNDYHD4DySnFZLh0KukjAarWeX/5aus7Ngo2kivbGJ6lz2qvO
+         gNhLTH5i3f7b3+0uZfW5TwqJ0whPmvvadY/ZCv2DPmnIVmgFxx1z/YJvdLvVFaOPBD/m
+         ZYmtJ0azrboayhI6cSWwCWrAdQwtnDVbqqKqvGmVTikBkHl+KAn/Jl/oQKy/5vnY57NM
+         egavyOAyEflstHf606alYn1kXCvEtfglC+YkXx/aaq4fUfwINvXCyS1ZmEZ7Ztrs8+Qs
+         dONuRXGuNZXhzD/mpy5s2LjU7u4qGR/yVeNqLhXWimj5qUEDFUV8diEKvyJIjz0P1UVu
+         Q7bA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788689409; x=1789294209;
+        h=content-type:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=I0KCyOw42uRK0hHH231OnOjaHEovCNialr9lJXe3FYI=;
+        b=TvPvA0MHfxaX8WrEro3mWO6BNAWkuYti880mpQQ+mWQQqo1nRzntTuy2/VmjrYXrKk
+         gKlQCy25CSuUQdlMqt9u2tAMXcp8pdLDanV9WDPxQPIwzNlCGcN+oBe+A6blPwpSniRB
+         lx3lCEYRvFUSaExthVi0LmnSaUOQOL9JOwaREuSn9MSGnapBWitkC2h45nbre1/JEjRE
+         lIcE51rvYFf0wjDeejyslK7x+7+3GRtKsILVv+NTfHhKb4gMfPgkt4W1Md4eKnI7q6bM
+         W4q+I6B8p2y1NyIZr0+Ff3chWz+9tFJo6L4jVdD3dQHyl6lGtkR/u9zs/I+pDbaYN9ia
+         GUCg==
+X-Gm-Message-State: AFuF++mv+AcjrMpini2dhunJ1zAbKO5M9lY2KU6mZ7NhbkT6sF/HgAVG
+	uwo/XjB3eeUq9VUmDrFzM+C/6w7frUmgH+/bUYcThYyi5X3ZJuPhqnYFSqt5/X9iU6x6vb99J17
+	XpfD4W+ja9fNxMm9DaJKl4917njnMtsp90A==
+X-Gm-Gg: AYBFou00Dj/O8jCdQzM91cyVzz7xwOMFk76NieN0/eJDSAig9AtknANv5UAa86pgxaj
+	YFPB0Ik2KlYWyOLQDlkk4emvfcvsqMOLj0VoSH2Db9C1lfR0HTeMDKbYFJPOyWljzCogAoQcmJZ
+	Z9vLVbqVG8UZMYuw/u3TswpwT0XWzLqeu1NWEDm9ZONBWmGt7SI/aQIJLFWsuOaZbZjK46uVAgc
+	MfpmL71Z+agqYlBfG6JTN6Ez/JFE4uvUKbgYyBLj/0e445ueCNO8URn248fNYVIkHHtKtaH3NV6
+	oesbPf8px7NXHPrYrW/WN7jU/KnwjrxY1FlW5hu1P8gBqupEh6s7RkyGkDMgdLs812FETi0kqAi
+	+Q4jmOopROXD/NM0A52ZMc0v7zGB3VyN6KiMHvOP4H2MkzE/7g4wIPDHNvDaniqcd4b3Bnt/RBC
+	gYHK6zBPFm/cxKaz3LRWQVstS3YjJNAPI7mwID4LT7O+6WTDNoxS/K8RTcYojG9foPXSBZ/WM2s
+	iE=
+X-Received: by 2002:a17:906:ba84:b0:c20:f871:1020 with SMTP id
+ a640c23a62f3a-c260ca1a225mr633652766b.19.1788689409315; Sun, 06 Sep 2026
+ 03:10:09 -0700 (PDT)
+MIME-Version: 1.0
+From: Rajnil Saha <rajnilhere@gmail.com>
+Date: Sun, 6 Sep 2026 15:39:57 +0530
+X-Gm-Features: AcwNN1W9T-gVPkbiRKTyEnez64EPOrUCZnM5U2JH6NPEFez7WYsSSyEIJEXWX2A
+Message-ID: <CAHqp5QPcVQcMBCbeAwdPST7qv+ot_b3LwJfYZK6RDW2JcsRwQA@mail.gmail.com>
+Subject: Link
+To: Sayantan Roy <sayantanroy634@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000db19bf065acdb472"
+
+--000000000000db19bf065acdb472
+Content-Type: text/plain; charset="UTF-8"
+
+https://claude.ai/share/1aa8e37f-3a92-4cf4-9ddc-d7f488eb892e
+
+--000000000000db19bf065acdb472
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="auto"><a href="https://claude.ai/share/1aa8e37f-3a92-4cf4-9ddc-d7f488eb892e">https://claude.ai/share/1aa8e37f-3a92-4cf4-9ddc-d7f488eb892e</a></div>
+
+--000000000000db19bf065acdb472--
