@@ -1,4 +1,4 @@
-# 🛡️ Artemis (formerly PhishX)
+# 🛡️ Artemis
 **Advanced Multi-Layered Cybersecurity & Threat Intelligence Platform**
 
 Artemis is a comprehensive, machine-learning-powered cybersecurity platform designed to analyze digital artifacts, detect phishing, expose malware, and prevent social engineering threats. Built with a robust React frontend and a highly optimized FastAPI/Python backend, Artemis leverages dual-engine Machine Learning pipelines, stacking meta-learners, and real-time threat intelligence to protect users from sophisticated cyber attacks.
